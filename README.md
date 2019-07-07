@@ -1,3 +1,3 @@
 # Lean
 
-I am learning how to verify my proofs using Lean.
+This is where I leave my Lean. Stay wonk.
