@@ -33,7 +33,7 @@ constants (a : α) (b : β) (c : γ)
 #check (λ x : α, g (f x)) a -- (λ (x : α), g (f x)) a : γ, 
 #reduce (λ x : α, g (f x)) a -- g (f a)
 #reduce (λ (v : β → γ) (u : α → β) (x : α), v (u x)) g f a -- g (f a)
-#reduce (λ (φ ϕ ψ: Type) (v : ϕ → ψ) (u : φ → ϕ) (x : φ), v (u x)) α β γ g f a -- g (f a)
+#reduce (λ (φ ϕ ψ : Type) (v : ϕ → ψ) (u : φ → ϕ) (x : φ), v (u x)) α β γ g f a -- g (f a)
 -- above expression assigns (φ ϕ ψ) to (α β γ) respectively, the functions v, u to g, f  respectively, 
 -- and x in φ to a
 
@@ -53,3 +53,7 @@ constant b' : bool
 
 #print "lean can compute as well"
 #eval 3 + 4
+
+#reduce (λ (ψ : Type) (u : ψ → ψ) (x : ψ), u (u x)) α h a
+#reduce λ (u : α → α) (x : α), h (h a)
+#reduce λ (ψ : Type) (y : ψ) (u : ψ → ψ), h (h a)
