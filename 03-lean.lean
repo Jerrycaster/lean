@@ -19,9 +19,10 @@ def do_twice' : (ℕ → ℕ) → ℕ → ℕ := λ f x, f (f x)
 #reduce do_twice square 3       -- 81
 
 def compose (g : ℕ → ℕ) (f : ℕ → ℕ) (x : ℕ) := g (f x)
-def compose'' (f : ℕ → ℕ) (g : ℕ → ℕ) (x : ℕ) := g (f x)
+def compose'' (α : Type) (f : α → α) (g : α → α) (x) := g (f x)
 
 #reduce compose double square 3 -- 18
+#reduce compose'' ℕ double square 3 -- 36 
 
 -- these are equivalent to...--
 
@@ -31,9 +32,9 @@ def square' : ℕ → ℕ := λ x, x * x
 #reduce square' 4
 #reduce do_twice' square' 4 -- 256
 
-def compose' (α β γ : Type) (g : β → γ) (f : α → β) (x : α) : γ := g (f x)
+def compose' (α β γ : Type) (g : β → γ) (f : α → β) (x : α) := g (f x)
 --def compose'' : ((ℕ → ℕ) × (ℕ → ℕ)) → (ℕ → ℕ) := λ g f x, g (f x)
-#reduce compose' double square 4
+#reduce compose' ℕ ℕ ℕ double square 4
 
 def Do_twice : ((ℕ → ℕ) → (ℕ → ℕ)) → (ℕ → ℕ) → (ℕ → ℕ) := λ F x, F (F x)
 #reduce Do_twice do_twice double 2
